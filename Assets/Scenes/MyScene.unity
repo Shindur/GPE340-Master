@@ -2491,7 +2491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyList:
-  - {fileID: 301166801807752355, guid: 212a03dc78c52484d8219d7663281ebe, type: 3}
+  - {fileID: 6545351053874258555, guid: 212a03dc78c52484d8219d7663281ebe, type: 3}
   maxEnemySpawns: 3
   spawnDelay: 1
 --- !u!114 &1857509322 stripped

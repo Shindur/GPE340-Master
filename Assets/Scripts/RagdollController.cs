@@ -47,23 +47,15 @@ public class RagdollController : MonoBehaviour
         DeactiveRagdoll();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.R))
-        {
-            ActivateRagdoll();
-        }
-    }
-
     //when player or enemy dies, activate the ragdoll
     public void ActivateRagdoll()
     {
-        
+        //go through each rigidbody child, set them to not be kinematic
         foreach (Rigidbody rigidbody in childRBS)
         {
             rigidbody.isKinematic = false;
         }
+        //go through each collider child, set them to true
         foreach(Collider collider in childColl)
         {
             collider.enabled = true;
@@ -83,29 +75,30 @@ public class RagdollController : MonoBehaviour
         }
 
     }
-
+    //For when the ragdoll needs to be deactivated, assumed for when lives are introduced
     private void DeactiveRagdoll()
     {
-        
+        //go through each rigidbody child, set them to be kinematic
         foreach (Rigidbody rigidbody in childRBS)
         {
             rigidbody.isKinematic = true;
         }
+        //go through each collider child, set them to false
         foreach (Collider collider in childColl)
         {
             collider.enabled = false;
         }
-        //set the animator to false
+        //set the animator to true
         animator.enabled = true;
-        //set the main body to be kinematic
+        //set the main body to not be kinematic
         mainRigidBody.isKinematic = false;
-        //set the main collider to not be activated
+        //set the main collider to be activated
         mainColl.enabled = true;
 
         //check if the body has a navmesh
         if (meshAgent != null)
         {
-            //if it has one, deactivate it
+            //if it has one, activate it
             meshAgent.enabled = true;
         }
 

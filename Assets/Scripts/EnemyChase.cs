@@ -20,8 +20,6 @@ public class EnemyChase : WeaponAgent
     //transform of the AI itself
     private Transform aiTransform;
 
-    //testing
-    private HealthManager testy;
 
     protected override void Awake()
     {
@@ -32,7 +30,6 @@ public class EnemyChase : WeaponAgent
         animator.SetFloat("enemyRunSpeed", enemySpeed);
         //equips random gun to AI
         AIEquipRandomWeapon();
-        testy = gameObject.GetComponent<HealthManager>();
     }
     // Start is called before the first frame update
     void Start()
