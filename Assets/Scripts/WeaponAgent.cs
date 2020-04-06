@@ -30,7 +30,10 @@ public abstract class WeaponAgent : MonoBehaviour
         wpnHandler = GetComponent<WeaponHandler>();
     }
 
-    //Used to equip a weapon
+    /// <summary>
+    /// Used to equip a weapon
+    /// </summary>
+    /// <param name="name"></param>
     public virtual void EquipWeapon(string name)
     {
         //unequip current weapon first
@@ -42,7 +45,7 @@ public abstract class WeaponAgent : MonoBehaviour
             {
                 //puts the weapon in the players hands
                 equippedWeapon = Instantiate(weapon, wpnTransform.position, wpnTransform.rotation) as GameObject;
-                //sets the game object as a parent of the game object
+                //sets the game object as a child of the game object
                 equippedWeapon.transform.SetParent(wpnTransform);
                 //puts the weapon on the same layer as the player
                 equippedWeapon.layer = gameObject.layer;
@@ -58,8 +61,10 @@ public abstract class WeaponAgent : MonoBehaviour
         
     }
 
-    //unequips currently equipped weapon when called
-    //will only be called when changing weapons
+    /// <summary>
+    /// unequips currently equipped weapon when called
+    /// will only be called when changing weapons
+    /// </summary>
     public void UnequipWeapon()
     {
         if(equippedWeapon)
@@ -69,7 +74,9 @@ public abstract class WeaponAgent : MonoBehaviour
             wpnType = 0;
         }
     }
-    //handles IK animations for weapons
+    /// <summary>
+    /// handles IK animations for weapons
+    /// </summary>
     protected virtual void OnAnimatorIK()
     {
         //exits function if no weapon eqipped
@@ -121,9 +128,13 @@ public abstract class WeaponAgent : MonoBehaviour
 
     //Mainly for AI after this point
 
-    //Allows AI to shoot
+    /// <summary>
+    /// Allows AI to shoot
+    /// </summary>
     protected abstract void PullTrigger();
 
-    //Stops AI from shooting
+    /// <summary>
+    /// Stops AI from shooting
+    /// </summary>
     protected abstract void ReleaseTrigger();
 }

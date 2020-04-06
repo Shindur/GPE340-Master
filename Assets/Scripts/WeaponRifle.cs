@@ -10,7 +10,9 @@ public class WeaponRifle : WeaponHandler
         base.Awake();
     }
 
-    //override the shoot function
+    /// <summary>
+    /// override the shoot function
+    /// </summary>
     public override void Shoot()
     {
         if (canShoot)
@@ -24,8 +26,10 @@ public class WeaponRifle : WeaponHandler
         }
     }
 
-    //override the release function
-    //but since it's auto anyway, doesn't really matter
+    /// <summary>
+    /// override the release function
+    /// but since it's auto anyway, doesn't really matter
+    /// </summary>
     public override void Release()
     {
         ;

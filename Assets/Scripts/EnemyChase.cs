@@ -54,18 +54,25 @@ public class EnemyChase : WeaponAgent
         }
     }
 
-    //Allows the AI to shoot
+    /// <summary>
+    /// Allows the AI to shoot
+    /// </summary>
     protected override void PullTrigger()
     {
         wpnHandler.Shoot();
     }
 
-    //Stops AI from shooting
+    /// <summary>
+    /// Stops AI from shooting
+    /// </summary>
     protected override void ReleaseTrigger()
     {
         wpnHandler.Release();
     }
 
+    /// <summary>
+    /// Allows the AI to move towards the player
+    /// </summary>
     private void AIMovement()
     {
         if(!targetPlayer)
@@ -83,13 +90,17 @@ public class EnemyChase : WeaponAgent
         MoveToPlayer();
     }
 
-    //called to move AI to player
+    /// <summary>
+    /// called to move AI to player
+    /// </summary>
     private void MoveToPlayer()
     {
         meshyMesh.SetDestination(targetPlayer.position);
     }
 
-    //For AI animations
+    /// <summary>
+    /// For AI animations
+    /// </summary>
     private void AIAnimations()
     {
         Vector3 input = meshyMesh.desiredVelocity;
@@ -98,12 +109,17 @@ public class EnemyChase : WeaponAgent
         animator.SetFloat("Vertical", input.z);
     }
 
+    /// <summary>
+    /// Used in aiding AI to move
+    /// </summary>
     private void OnAnimatorMove()
     {
         meshyMesh.velocity = animator.velocity;
     }
 
-    //For AI aiming at player
+    /// <summary>
+    /// For AI aiming at player
+    /// </summary>
     private void AIAiming()
     {
         //create a vector for the target to aim at
@@ -114,7 +130,9 @@ public class EnemyChase : WeaponAgent
         equippedTransform.rotation = Quaternion.RotateTowards(equippedTransform.rotation, targetPlayerRotation, meshyMesh.angularSpeed * Time.deltaTime);
     }
 
-    //handles the shooting, which is just auto in this case anyway
+    /// <summary>
+    /// /handles the shooting, which is just auto in this case anyway
+    /// </summary>
     private void AIShooting()
     {
         //if AI is within range of player
@@ -135,7 +153,10 @@ public class EnemyChase : WeaponAgent
         }
     }
 
-    //checks if AI is within range of player
+    /// <summary>
+    /// checks if AI is within range of player
+    /// </summary>
+    /// <returns></returns>
     private bool IsAIInRange()
     {
         //checks if we're within the range of the player, set in inspector
@@ -151,7 +172,10 @@ public class EnemyChase : WeaponAgent
         }
     }
 
-    //checks if AI can see the player
+    /// <summary>
+    /// checks if AI can see the player
+    /// </summary>
+    /// <returns></returns>
     private bool CanAISeePlayer()
     {
         //reference of the angle between player and AI
@@ -170,7 +194,9 @@ public class EnemyChase : WeaponAgent
         }
     }
 
-    //have enemy equip random weapons at start
+    /// <summary>
+    /// have enemy equip random weapons at start
+    /// </summary>
     private void AIEquipRandomWeapon()
     {
         EquipWeapon(wpnList[Random.Range(0, wpnList.Count)].GetComponent<WeaponHandler>().name);

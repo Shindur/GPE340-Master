@@ -16,9 +16,12 @@ public class PlayerAgent : WeaponAgent
         weaponFunction();
     }
 
-    //for handling the weapons 
+    /// <summary>
+    /// for handling the weapons 
+    /// </summary>
     private void weaponFunction()
     {
+        //If we push down on the fire command, fire gun
         if (Input.GetAxis("Fire") > 0)
         {
             if (wpnHandler != null)
@@ -26,7 +29,7 @@ public class PlayerAgent : WeaponAgent
                 PullTrigger();
             }
         }
-
+        //If we let go of fire command, stop shooting
         if(Input.GetButtonUp("Fire"))
         {
             if(wpnHandler != null)
@@ -36,12 +39,16 @@ public class PlayerAgent : WeaponAgent
         }
     }
 
-    //override the pulltrigger, just to call it for the player
+    /// <summary>
+    /// override the pulltrigger, just to call it for the player
+    /// </summary>
     protected override void PullTrigger()
     {
         wpnHandler.Shoot();
     }
-    //override the releasetrigger, just to call it for the player
+    /// <summary>
+    /// override the releasetrigger, just to call it for the player
+    /// </summary>
     protected override void ReleaseTrigger()
     {
         wpnHandler.Release();

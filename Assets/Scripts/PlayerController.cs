@@ -3,27 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
-{
-    private Rigidbody rb;
-    private bool isSpacePressed;
-
-    //Taken from the lecture
+{ 
+    [Header("Movement Settings")]
     [SerializeField, Tooltip("The max speed of the player")]
     //Speed of the character
     private float speed = 4f;
     //Make an animator reference for the animations
     private Animator animator;
-
+    //health manager reference
     private HealthManager health;
-
+    //weapon agent reference
     private WeaponAgent wpnAgent;
-
-    //private bool to determine if the player is alive or not
-    private bool isPlayerAlive;
-
     //playeragent handler
     private PlayerAgent playerAgent;
 
+    //private bool to determine if the player is alive or not
+    private bool isPlayerAlive;
+    //private rigidbody - so we can access it properly.
+    private Rigidbody rb;
+    //private bool to determine if user pressed spacebar to jump.
+    private bool isSpacePressed;
+
+
+    /// <summary>
+    /// Initialize some variables needed in script
+    /// </summary>
     private void Start()
     {
         health = GetComponent<HealthManager>();
@@ -31,6 +35,9 @@ public class PlayerController : MonoBehaviour
         playerAgent = GetComponent<PlayerAgent>();
     }
 
+    /// <summary>
+    /// Initialize more variables needed in script
+    /// </summary>
     private void Awake()
     {
         //grab the animator component from the prefab
@@ -40,6 +47,9 @@ public class PlayerController : MonoBehaviour
         isPlayerAlive = true;
     }
 
+    /// <summary>
+    /// Update function, runs every frame.
+    /// </summary>
     private void Update()
     {
         if (isPlayerAlive)
@@ -51,14 +61,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Calls OnDeath, sets bool to false
+    /// </summary>
     public void OnDeath()
     {
         isPlayerAlive = false;
     }
 
 
-    //Function used to make the character look at the mouse
+    /// <summary>
+    /// Function used to make the character look at the mouse cursor
+    /// </summary>
     void LookAtCamera()
     {
         //generate some raycasting variables and grab the position of the mouse
@@ -75,6 +89,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Function for jumping
+    /// </summary>
     void Jumping()
     {
         //Jumping of character using the spacebar
@@ -97,6 +114,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Movement function - Enables the character to move.
+    /// </summary>
     void Movement()
     {
         //moves player using WASD or arrow keys
@@ -110,13 +130,19 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Vertical", input.z);
     }
 
-    //Calls the heal function from HealthManager script
+    /// <summary>
+    /// Calls the heal function from HealthManager script
+    /// </summary>
+    /// <param name="heal"></param>
     public void HealPlayer(float heal)
     {
         health.Heal(heal);
     }
 
-    //Calls the damage function from the HealthManager script
+    /// <summary>
+    /// Calls the damage function from the HealthManager script
+    /// </summary>
+    /// <param name="damageTaken"></param>
     public void DamagePlayer(float damageTaken)
     {
         health.DamageToPlayer(damageTaken);

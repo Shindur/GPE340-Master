@@ -8,6 +8,10 @@ public class HealthPickup : PickupBase
     [SerializeField, Tooltip("How much the player heals")]
     protected float healAmount = 10.0f;
 
+    /// <summary>
+    /// Heals the player on objeect pickup
+    /// </summary>
+    /// <param name="player"></param>
     protected override void OnPickUp(PlayerController player)
     {
         //calls the HealPlayer function below
@@ -16,7 +20,10 @@ public class HealthPickup : PickupBase
         base.OnPickUp(player);
     }
 
-    //calls into the PlayerController script for the HealPlayer function there
+    /// <summary>
+    /// calls into the PlayerController script for the HealPlayer function there
+    /// </summary>
+    /// <param name="player"></param>
     private void HealPlayer(PlayerController player)
     {
         player.HealPlayer(healAmount);

@@ -38,7 +38,10 @@ public abstract class PickupBase : MonoBehaviour
         CheckIfSpawned();
     }
 
-    //When the player hits the object, "destroys" the object, and starts a countdown
+    /// <summary>
+    /// When the player hits the object, "destroys" the object, and starts a countdown
+    /// </summary>
+    /// <param name="other"></param>
     protected virtual void OnTriggerEnter(Collider other)
     {
         PlayerController player = other.GetComponent<PlayerController>();
@@ -55,7 +58,10 @@ public abstract class PickupBase : MonoBehaviour
     }
 
     //works as intended. 
-    //sets the gameobject to false, and sets the countdown to work
+    /// <summary>
+    /// sets the gameobject to false, and sets the countdown to work
+    /// </summary>
+    /// <param name="player"></param>
     protected virtual void OnPickUp(PlayerController player)
     {
         //set the activated to false
@@ -66,7 +72,9 @@ public abstract class PickupBase : MonoBehaviour
         PowerUpHandler();
     }
 
-
+    /// <summary>
+    /// Checks if pickup is spawned, if not countdown till it can
+    /// </summary>
     protected virtual void CheckIfSpawned()
     {
         //checks if the respawn counter is 0
@@ -83,7 +91,9 @@ public abstract class PickupBase : MonoBehaviour
         }
     }
 
-    //Checks the bool if the powerup should be activated in the scene
+    /// <summary>
+    /// Checks the bool if the powerup should be activated in the scene
+    /// </summary>
     protected virtual void PowerUpHandler()
     {
         //if the bool is true, make the powerup appear on screen

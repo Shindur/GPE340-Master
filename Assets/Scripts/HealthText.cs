@@ -6,8 +6,10 @@ using UnityEngine.UI;
 
 public class HealthText : MonoBehaviour
 {
+    [Header("Reference the HealthManager Script here")]
     public HealthManager health;
 
+    //used for grabbing the text field and overwriting it
     private Text text;
 
 

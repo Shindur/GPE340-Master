@@ -27,6 +27,9 @@ public class EnemySpawner : MonoBehaviour
         InvokeRepeating("SpawnEnemy", 0f, spawnDelay);
     }
 
+    /// <summary>
+    /// Used to spawn the enemies in
+    /// </summary>
     private void SpawnEnemy()
     {
         //check if we have enough enemies, if we do then kick out the function
@@ -47,13 +50,18 @@ public class EnemySpawner : MonoBehaviour
 
     }
 
-    //returns a random spawn point from the list for the enemies to spawn at
+    /// <summary>
+    /// returns a random spawn point from the list for the enemies to spawn at
+    /// </summary>
+    /// <returns></returns>
     private Transform RandomSpawn()
     {
         return spawnList[Random.Range(0, spawnList.Count)];
     }
 
-    //populate the spawn point list
+    /// <summary>
+    /// populate the spawn point list
+    /// </summary>
     private void PopulateSpawns()
     {
         spawnList = new List<Transform>();
@@ -65,7 +73,9 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    //if enemy dies, decrement the total number
+    /// <summary>
+    /// if enemy dies, decrement the total number
+    /// </summary>
     private void CheckIfDead()
     {
         currentEnemyCount--;

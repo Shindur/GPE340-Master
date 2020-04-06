@@ -33,15 +33,23 @@ public class BulletProjectile : MonoBehaviour
         HandleTimer();
     }
 
+    /// <summary>
+    /// sets the time to the projectile range
+    /// </summary>
+    /// <param name="range"></param>
     public void SetBulletRange(float range)
     {
         //sets the time to the projectile range
         timer = range / 60f;
     }
 
+    /// <summary>
+    /// checks if the timer is set to 0, if it is destroy the bullet
+    /// if not count down to 0
+    /// </summary>
     private void HandleTimer()
     {
-        //if timer is 0
+        //if timer is 0 destroy the bullet
         if(timer <= 0)
         {
             DestroyBullet();
@@ -51,6 +59,10 @@ public class BulletProjectile : MonoBehaviour
         timer -= Time.deltaTime;
     }
 
+    /// <summary>
+    /// When the bullet collides with a player/ai
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnCollisionEnter(Collision collision)
     {
         //creates a reference to the health component on hitting object if it has one
@@ -63,10 +75,14 @@ public class BulletProjectile : MonoBehaviour
             checkingHealth.DamageToPlayer(bulletDamage);
         }
 
+        //destroy the bullet after collision
         DestroyBullet();
 
     }
 
+    /// <summary>
+    /// Function to destroy the bullet when needed
+    /// </summary>
     private void DestroyBullet()
     {
         Destroy(gameObject);

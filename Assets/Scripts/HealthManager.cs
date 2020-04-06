@@ -56,13 +56,19 @@ public class HealthManager : MonoBehaviour
         DeathCountdown();
     }
 
-    //Heals the player and does not go over max health
+    /// <summary>
+    /// Heals the player and does not go over max health
+    /// </summary>
+    /// <param name="heal"></param>
     public void Heal(float heal)
     {
         currentHealth = Mathf.Clamp(currentHealth + heal, 0f, maxHealth);
     }
 
-    //Damages the player and does not go below 0
+    /// <summary>
+    /// Damages the player and does not go below 0
+    /// </summary>
+    /// <param name="damageTaken"></param>
     public void DamageToPlayer(float damageTaken)
     {
         //deals damage to player and enemies and clamps it to 0
@@ -78,7 +84,9 @@ public class HealthManager : MonoBehaviour
 
     }
 
-    //for setting the stage for destroying the character
+    /// <summary>
+    /// for setting the stage for destroying the character
+    /// </summary>
     private void DestroyCharacter()
     {
         //if it's the player set the bool to true
@@ -98,7 +106,9 @@ public class HealthManager : MonoBehaviour
 
     }
 
-    //decrements deathcountdown every frame and destroys once 0 and appropriate layer
+    /// <summary>
+    /// decrements deathcountdown every frame and destroys once 0 and appropriate layer
+    /// </summary>
     private void DeathCountdown()
     {
         //decrement the deathtimer

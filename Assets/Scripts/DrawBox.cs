@@ -7,6 +7,9 @@ public class DrawBox : MonoBehaviour
     //vector for the box to be drawn
     public Vector3 scale;
 
+    /// <summary>
+    /// Draws the spawn boxes
+    /// </summary>
     private void OnDrawGizmos()
     {
         //sets the matrix to draw new gizmos

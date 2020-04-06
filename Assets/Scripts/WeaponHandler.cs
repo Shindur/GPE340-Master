@@ -45,7 +45,9 @@ public abstract class WeaponHandler : MonoBehaviour
     [SerializeField, Tooltip("The bullet's velocity")]
     protected float wpnVelocity;
 
-    //enum for the different weapon types
+    /// <summary>
+    /// enum for the different weapon types
+    /// </summary>
     public enum WeaponAnimationType
     {
         None = 0,
@@ -76,44 +78,65 @@ public abstract class WeaponHandler : MonoBehaviour
         ShotTimer();
     }
 
-    //returns the weapons name
+    /// <summary>
+    /// returns the weapons name
+    /// </summary>
+    /// <returns></returns>
     public string NameOfWeapon()
     {
         return nameOfWeapon;
     }
 
-    //returns the AI's range
+    /// <summary>
+    /// returns the AI's range
+    /// </summary>
+    /// <returns></returns>
     public float AIRange()
     {
         return rangeAI;
     }
 
-    //returns the AI's angle
+    /// <summary>
+    /// returns the AI's angle
+    /// </summary>
+    /// <returns></returns>
     public float AIAngle()
     {
         return aiAngleShooting;
     }
 
-    //returns weapon rate of fire
+    /// <summary>
+    /// returns weapon rate of fire
+    /// </summary>
+    /// <returns></returns>
     public float RateOfFire()
     {
         return rateOfFire;
     }
 
-    //returns the left hand IK
+    /// <summary>
+    /// returns the left hand IK
+    /// </summary>
+    /// <returns></returns>
     public bool LeftHandIK()
     {
         return leftIK;
     }
-    
-    //returns the right hand IK
+
+    /// <summary>
+    /// returns the right hand IK
+    /// </summary>
+    /// <returns></returns>
     public bool RightHandIK()
     {
         return rightIK;
     }
 
-    //Next 2 functions returns the transform
-    //of the hands transforms for IK
+    /// <summary>
+    /// Next 2 functions returns the transform
+    /// of the hands transforms for IK
+    /// </summary>
+    /// <returns></returns>
     public Transform LeftHandIKTrans()
     {
         return leftHandTarget;
@@ -123,10 +146,14 @@ public abstract class WeaponHandler : MonoBehaviour
         return rightHandTarget;
     }
 
-    //To be handled by other scripts
+    /// <summary>
+    /// To be handled by other scripts
+    /// </summary>
     public abstract void Shoot();
 
-    //Used to fire the guns, can be changed by other scripts
+    /// <summary>
+    /// Used to fire the guns, can be changed by other scripts
+    /// </summary>
     protected virtual void Fire()
     {
         //generates prefab of the bullet
@@ -141,10 +168,14 @@ public abstract class WeaponHandler : MonoBehaviour
         bullProj.body.AddRelativeForce(Vector3.forward * wpnVelocity, ForceMode.VelocityChange);
     }
 
-    //to be used in the weapon rifle script
+    /// <summary>
+    /// to be used in the weapon rifle script
+    /// </summary>
     public abstract void Release();
 
-    //determines when the weapon is good to shoot
+    /// <summary>
+    /// determines when the weapon is good to shoot
+    /// </summary>
     protected virtual void ShotTimer()
     {
         //if the timer is set

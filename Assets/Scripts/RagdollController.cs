@@ -47,7 +47,9 @@ public class RagdollController : MonoBehaviour
         DeactiveRagdoll();
     }
 
-    //when player or enemy dies, activate the ragdoll
+    /// <summary>
+    /// when player or enemy dies, activate the ragdoll
+    /// </summary>
     public void ActivateRagdoll()
     {
         //go through each rigidbody child, set them to not be kinematic
@@ -75,7 +77,9 @@ public class RagdollController : MonoBehaviour
         }
 
     }
-    //For when the ragdoll needs to be deactivated, assumed for when lives are introduced
+    /// <summary>
+    /// For when the ragdoll needs to be deactivated, assumed for when lives are introduced
+    /// </summary>
     private void DeactiveRagdoll()
     {
         //go through each rigidbody child, set them to be kinematic
@@ -104,7 +108,10 @@ public class RagdollController : MonoBehaviour
 
     }
 
-    //for the health script to reference when the player/enemy dies
+    /// <summary>
+    /// for the health script to reference when the player/enemy dies
+    /// activates the ragdoll function
+    /// </summary>
     private void IfDead()
     {
         ActivateRagdoll();

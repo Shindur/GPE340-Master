@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class WeaponPickup : PickupBase
 {
-    //variable to call WeaponHandler stuff
+    //variable to call WeaponHandler functions
     private WeaponHandler wpnHandler;
+    //variable to call playeragent functions
     private PlayerAgent playerAgent;
 
+    //to reference the player gameobject
     private GameObject g;
+    //to reference the weapon being used at the time
     private GameObject weapon;
 
     private int wpnType;
@@ -26,6 +29,10 @@ public class WeaponPickup : PickupBase
         base.Update();
     }
 
+    /// <summary>
+    /// Used for equipping the weapon being picked up
+    /// </summary>
+    /// <param name="player"></param>
     protected override void OnPickUp(PlayerController player)
     {
         EquipWeapon();
@@ -33,13 +40,19 @@ public class WeaponPickup : PickupBase
         base.OnPickUp(player);
     }
 
+    /// <summary>
+    /// Aids in the above function
+    /// </summary>
     private void EquipWeapon()
     {
         //calls the EquipWeapon function from WeaponAgent
         playerAgent.EquipWeapon(wpnHandler.name);
     }
 
-    //calls the base on trigger to ensure it gets called
+    /// <summary>
+    /// calls the base on trigger to ensure it gets called
+    /// </summary>
+    /// <param name="other"></param>
     protected override void OnTriggerEnter(Collider other)
     { 
         base.OnTriggerEnter(other);
